@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+  <modelVersion>4.0.0</modelVersion>
+    
+  <parent>
+    <groupId>com.exist.exercise7</groupId>
+    <artifactId>exercise7</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+    
+  <groupId>com.exist.infra</groupId>
+  <artifactId>infra</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>infra</name>
+  <url>http://maven.apache.org</url>
+    
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <modules>
+    <module>persistence</module>
+  </modules>
+</project>

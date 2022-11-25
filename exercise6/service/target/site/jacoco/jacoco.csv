@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+service,com.exist.service.functions,Reset,3,34,0,4,1,7,1,3,1,1
+service,com.exist.service.functions,Sort,54,0,4,0,13,0,5,0,3,0
+service,com.exist.service.functions,Edit,41,68,2,10,7,8,3,6,1,2
+service,com.exist.service.functions,Add,3,56,0,6,1,10,1,5,1,2
+service,com.exist.service.functions,Search,44,55,2,6,7,7,3,4,1,2
+service,com.exist.service.functions,Print,3,45,0,4,1,5,1,3,1,1
+service,com.exist.service.view,MatrixView,0,80,0,0,0,30,0,12,0,12
+service,com.exist.service.controller,matrixController,379,0,26,0,115,0,24,0,11,0
+service,com.exist.service.utility,Helper,225,28,18,4,42,8,14,4,5,2

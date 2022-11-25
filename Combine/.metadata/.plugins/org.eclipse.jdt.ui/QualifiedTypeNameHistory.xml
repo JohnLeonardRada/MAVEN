@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.exist.Employee.reference.Severity"/>
+    <fullyQualifiedTypeName name="com.exist.Employee.reference.Status"/>
+    <fullyQualifiedTypeName name="com.exist.Employee.reference.Department"/>
+    <fullyQualifiedTypeName name="com.exist.Employee.ticket.Ticket"/>
+    <fullyQualifiedTypeName name="com.exist.Employee.employee.EmployeeRepository"/>
+    <fullyQualifiedTypeName name="com.exist.Employee.employee.Employee"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.reference.Department"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.reference.Severity"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.repository.TicketRepository"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.repository.EmployeeRepository"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.service.TicketService"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.model.Ticket"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.service.EmployeeService"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.model.Employee"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.model.Role"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.reference.ERole"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.service.UserRepository"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.model.User"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.security.services.UserDetailsImpl"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.security.services.UserDetailsServiceImpl"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.security.jwt.AuthEntryPointJwt"/>
+    <fullyQualifiedTypeName name="com.exist.EmployeeAPI.security.jwt.AuthTokenFilter"/>
+</qualifiedTypeNameHistroy>

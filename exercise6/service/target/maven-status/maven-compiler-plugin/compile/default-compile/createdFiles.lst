@@ -1,0 +1,8 @@
+com\exist\service\functions\Reset.class
+com\exist\service\utility\Helper.class
+com\exist\service\functions\Edit.class
+com\exist\service\view\MatrixView.class
+com\exist\service\functions\Search.class
+com\exist\service\controller\matrixController.class
+com\exist\service\functions\Add.class
+com\exist\service\functions\Print.class

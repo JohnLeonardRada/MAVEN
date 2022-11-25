@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>matrixController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">service</a> &gt; <a href="index.source.html" class="el_package">com.exist.service.controller</a> &gt; <span class="el_source">matrixController.java</span></div><h1>matrixController.java</h1><pre class="source lang-java linenums">package com.exist.service.controller;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+import com.exist.model.Content;
+import com.exist.model.Matrix;
+import com.exist.service.functions.*;
+import com.exist.service.utility.Helper;
+import com.exist.service.view.MatrixView;
+import com.exist.utility.Reader;
+
+public class matrixController {
+    int row;
+    int col;
+    String readFileLocation;
+    String saveFileLocation;
+    String defSaveLocation;
+
+    Matrix matrix;
+    MatrixView matrixView;
+    ArrayList&lt;ArrayList&lt;Content&gt;&gt; arrayMatrix;
+
+<span class="nc" id="L25">    public matrixController() throws FileNotFoundException{</span>
+<span class="nc" id="L26">        this.arrayMatrix = new ArrayList&lt;ArrayList&lt;Content&gt;&gt;();</span>
+<span class="nc" id="L27">        this.matrix = new Matrix(arrayMatrix, this.row, this.col);</span>
+<span class="nc" id="L28">        this.matrixView = new MatrixView();</span>
+<span class="nc" id="L29">        this.readFileLocation = &quot;C:\\Users\\user\\Desktop\\PracticeMaven\\TextFile\\readSample.txt&quot;;</span>
+<span class="nc" id="L30">        this.saveFileLocation = &quot;C:\\Users\\user\\Desktop\\PracticeMaven\\TextFile\\saveSample.txt&quot;;</span>
+<span class="nc" id="L31">        this.defSaveLocation = new File(&quot;C:\\Users\\user\\Desktop\\PracticeMaven\\TextFile&quot;).getAbsolutePath();</span>
+        try {
+<span class="nc" id="L33">            Helper.readFile(this.defSaveLocation + &quot;/readSample.txt&quot;, this.matrix);</span>
+<span class="nc" id="L34">        } catch (Exception e) {</span>
+<span class="nc" id="L35">            System.out.println(&quot;File Not Found! Saving to resources.&quot;);</span>
+<span class="nc" id="L36">            Helper.saveToFIle(this.defSaveLocation + &quot;/saveSample.txt&quot;, this.matrix);</span>
+<span class="nc" id="L37">        }</span>
+<span class="nc" id="L38">    }</span>
+
+<span class="nc" id="L40">    public matrixController(String args){</span>
+<span class="nc" id="L41">        this.arrayMatrix = new ArrayList&lt;ArrayList&lt;Content&gt;&gt;();</span>
+<span class="nc" id="L42">        this.matrix = new Matrix(arrayMatrix, this.row, this.col);</span>
+<span class="nc" id="L43">        this.matrixView = new MatrixView();</span>
+<span class="nc" id="L44">        this.readFileLocation = args + &quot;\\readSample.txt&quot;;</span>
+<span class="nc" id="L45">        this.saveFileLocation = args + &quot;\\saveSample.txt&quot;;</span>
+<span class="nc" id="L46">        this.defSaveLocation = new File(&quot;C:\\Users\\user\\Desktop\\PracticeMaven\\exercise5-maven\\exercise5-maven\\app\\target&quot;).getAbsolutePath();</span>
+        try {
+<span class="nc" id="L48">            Helper.readFile(this.defSaveLocation + &quot;\\readSample.txt&quot;, this.matrix);</span>
+<span class="nc" id="L49">        } catch (FileNotFoundException fnfe) {</span>
+<span class="nc" id="L50">            System.out.println(&quot;File Not Found! Saving to resources.&quot;);</span>
+<span class="nc" id="L51">            Helper.saveToFIle(this.defSaveLocation + &quot;\\saveSample.txt&quot;, this.matrix);</span>
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">    }</span>
+
+    // public void userInput(){
+    //     try {
+    //         this.row = Reader.readInt(&quot;Enter Row Dimension&quot;);
+    //         this.col = Reader.readInt(&quot;Enter Column Dimension&quot;);
+    //     } catch (Exception e) {
+    //         e.getLocalizedMessage();
+    //     }
+    // }
+
+    public void actionMenu(){
+<span class="nc" id="L65">        Helper.saveToFIle(this.saveFileLocation, this.matrix);</span>
+<span class="nc" id="L66">        this.matrixView.actionMenu();</span>
+<span class="nc" id="L67">        this.matrixView.displayAction();</span>
+        int action;
+<span class="nc" id="L69">        action = Reader.readInt(&quot;What's your action?&quot;);</span>
+
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        if(action == 1){</span>
+<span class="nc" id="L72">            addRow();</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        }else if(action == 2){</span>
+<span class="nc" id="L74">            addCol();</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        }else if(action == 3){</span>
+<span class="nc" id="L76">            searchString();</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        }else if(action == 4){</span>
+<span class="nc" id="L78">            editString();</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        }else if(action == 5){</span>
+<span class="nc" id="L80">            printMatrix();</span>
+<span class="nc bnc" id="L81" title="All 2 branches missed.">        }else if(action == 6){</span>
+<span class="nc" id="L82">            sortMatrix();</span>
+<span class="nc bnc" id="L83" title="All 2 branches missed.">        }else if(action == 7){</span>
+<span class="nc" id="L84">            resetMatrix();</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">        }else if(action == 0){</span>
+                
+        }
+<span class="nc" id="L88">        actionMenu();</span>
+<span class="nc" id="L89">    }</span>
+
+    public void addRow(){
+<span class="nc" id="L92">        matrixView.addRow();</span>
+        
+        try {
+            int addRowInput;
+            int colIndexInput;
+
+<span class="nc" id="L98">            colIndexInput = Reader.readInt(&quot;Select Column&quot;);</span>
+<span class="nc" id="L99">            addRowInput = Reader.readInt(&quot;Add Row&quot;);</span>
+            
+<span class="nc" id="L101">            Add.addRow(matrix, addRowInput, colIndexInput);</span>
+            
+<span class="nc" id="L103">            fileSave();</span>
+<span class="nc" id="L104">        } catch (Exception e) {</span>
+<span class="nc" id="L105">            e.getLocalizedMessage();</span>
+<span class="nc" id="L106">        }</span>
+<span class="nc" id="L107">    }</span>
+
+    public void addCol(){
+<span class="nc" id="L110">        matrixView.addCol();</span>
+
+        int addColInput;
+        int rowIndexInput;
+
+<span class="nc" id="L115">        rowIndexInput = Reader.readInt(&quot;Select Row&quot;);</span>
+<span class="nc" id="L116">        addColInput = Reader.readInt(&quot;Add Column&quot;);</span>
+
+<span class="nc bnc" id="L118" title="All 2 branches missed.">        if(addColInput &lt;= 0){</span>
+<span class="nc" id="L119">            addColInput = this.matrix.getCol();</span>
+        }
+<span class="nc" id="L121">        Add.addCol(matrix, addColInput, rowIndexInput);</span>
+<span class="nc" id="L122">        fileSave();</span>
+<span class="nc" id="L123">    }</span>
+
+    public void searchString(){
+<span class="nc" id="L126">        matrixView.searchString();</span>
+        
+<span class="nc" id="L128">        int total = 0;</span>
+        String search;
+<span class="nc" id="L130">        search = Reader.readString(&quot;Search&quot;);</span>
+
+<span class="nc" id="L132">        Search.searchString(matrix, search, total);</span>
+<span class="nc" id="L133">    }</span>
+
+    public void editString(){
+<span class="nc" id="L136">        matrixView.editString();</span>
+        
+        String choice;
+<span class="nc" id="L139">        String searchKey = &quot;&quot;;</span>
+<span class="nc" id="L140">        String newValue = &quot;&quot;;</span>
+
+<span class="nc" id="L142">        choice = Reader.readString(&quot;[K]Key || [V]Value&quot;);</span>
+<span class="nc bnc" id="L143" title="All 2 branches missed.">        if(choice.toUpperCase().equals(&quot;K&quot;)){</span>
+<span class="nc" id="L144">            searchKey = Reader.readString(&quot;Enter key index&quot;);</span>
+<span class="nc" id="L145">            Edit.editStringKey(matrix, searchKey, newValue);</span>
+<span class="nc" id="L146">            fileSave();</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">        }else if(choice.toUpperCase().equals(&quot;V&quot;)){</span>
+<span class="nc" id="L148">            searchKey = Reader.readString(&quot;Enter key index&quot;);</span>
+<span class="nc" id="L149">            Edit.editStringValue(matrix, searchKey, newValue);</span>
+<span class="nc" id="L150">            fileSave();</span>
+        }else{
+<span class="nc" id="L152">            matrixView.invallidInput();</span>
+<span class="nc" id="L153">            editString();</span>
+        }
+
+<span class="nc" id="L156">    }</span>
+
+    public void printMatrix(){
+<span class="nc" id="L159">        matrixView.printMatrix();</span>
+        try {
+<span class="nc" id="L161">            Print.printMatrix(matrix);</span>
+<span class="nc" id="L162">        } catch (Exception e) {</span>
+<span class="nc" id="L163">            e.printStackTrace();</span>
+<span class="nc" id="L164">        }</span>
+<span class="nc" id="L165">    }</span>
+
+    public void sortMatrix(){
+<span class="nc" id="L168">        matrixView.sortMatrix();</span>
+        
+        String sortMatrix;
+<span class="nc" id="L171">        sortMatrix = Reader.readString(&quot;[A]Ascending || [D]Descending&quot;);</span>
+<span class="nc" id="L172">        ArrayList&lt;ArrayList&lt;String&gt;&gt; stringValues = new ArrayList&lt;ArrayList&lt;String&gt;&gt;();</span>
+<span class="nc" id="L173">        Helper.concatString(stringValues, this.matrix);</span>
+
+<span class="nc bnc" id="L175" title="All 2 branches missed.">        if(sortMatrix.toUpperCase().equals(&quot;A&quot;)){</span>
+<span class="nc" id="L176">            Sort.sortAscending(matrix);</span>
+<span class="nc" id="L177">            fileSave();</span>
+<span class="nc bnc" id="L178" title="All 2 branches missed.">        }else if(sortMatrix.toUpperCase().equals(&quot;D&quot;)){</span>
+<span class="nc" id="L179">            Sort.sortDescending(matrix);</span>
+<span class="nc" id="L180">            fileSave();</span>
+        }else{
+<span class="nc" id="L182">            matrixView.invallidInput();</span>
+<span class="nc" id="L183">            sortMatrix();</span>
+        }  
+<span class="nc" id="L185">    }</span>
+
+    public void resetMatrix(){
+<span class="nc" id="L188">        matrixView.resetMatrix();</span>
+
+<span class="nc" id="L190">        int newRow = 0;</span>
+<span class="nc" id="L191">        int newCol = 0;</span>
+
+<span class="nc" id="L193">        this.matrix.getArrayMatrix().clear();</span>
+<span class="nc" id="L194">        newRow = Reader.readInt(&quot;Enter new row dimension&quot;);</span>
+<span class="nc" id="L195">        newCol = Reader.readInt(&quot;Enter new column dimension&quot;);</span>
+
+<span class="nc" id="L197">        Reset.resetMatrix(matrix, newRow, newCol);</span>
+<span class="nc" id="L198">        fileSave();</span>
+<span class="nc" id="L199">    }</span>
+
+    public void fileSave(){
+<span class="nc" id="L202">        Helper.saveToFIle(this.saveFileLocation, this.matrix);</span>
+<span class="nc" id="L203">        Helper.saveToFIle(this.defSaveLocation + &quot;/saveSample.txt&quot;, this.matrix);</span>
+<span class="nc" id="L204">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Print.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">service</a> &gt; <a href="index.source.html" class="el_package">com.exist.service.functions</a> &gt; <span class="el_source">Print.java</span></div><h1>Print.java</h1><pre class="source lang-java linenums">package com.exist.service.functions;
+
+import com.exist.model.Matrix;
+
+<span class="nc" id="L5">public class Print {</span>
+    public static void printMatrix(Matrix matrix){
+<span class="fc bfc" id="L7" title="All 2 branches covered.">        for(int rowIndex = 0; rowIndex &lt; matrix.getArrayMatrix().size(); rowIndex++){</span>
+<span class="fc bfc" id="L8" title="All 2 branches covered.">            for (int colIndex = 0; colIndex &lt; matrix.getArrayMatrix().get(rowIndex).size(); colIndex++) {</span>
+<span class="fc" id="L9">                System.out.print(&quot;[&quot; + matrix.getArrayMatrix().get(rowIndex).get(colIndex).getKey() + &quot;:(&quot; + matrix.getArrayMatrix().get(rowIndex).get(colIndex).getValue() + &quot;)]&quot;);</span>
+            }
+<span class="fc" id="L11">            System.out.println();</span>
+        }
+<span class="fc" id="L13">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

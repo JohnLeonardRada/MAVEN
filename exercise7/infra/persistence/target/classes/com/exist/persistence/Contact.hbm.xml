@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping package="com.exist.model">
+   <class name = "Contact" table = "CONTACT">
+      
+      <meta attribute = "class-description">
+         This class contains the contact records. 
+      </meta>
+      
+      <id name = "id" type = "int" column = "contact_id">
+         <generator class="native"/>
+      </id>
+      
+      <property name = "landline" column = "landline" type = "double"/>
+      <property name = "mobileNumber" column = "mobile_number" type = "double"/>
+      <property name = "email" column = "email" type = "string"/>
+      
+   </class>
+
+</hibernate-mapping>

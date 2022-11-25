@@ -1,0 +1,206 @@
+<div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Employee Number</th>
+        <th>Firstname</th>
+        <th>Middlename</th>
+        <th>Lastname</th>
+        <th>Department</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees">
+        <td><span>{{employee.id}}</span></td>
+        <td><span>{{employee.employeeNumber}}</span></td>
+        <td><span>{{employee.firstName}}</span></td>
+        <td><span>{{employee.middleName}}</span></td>
+        <td><span>{{employee.lastName}}</span></td>
+        <td><span>{{employee.department}}</span></td>
+        <td>
+            <button class="btn btn-sm btn-info" (click)="openDetails(contentDetails, employee)">
+              <i class="fa fa-search"></i>Details</button>
+            <button class="btn btn-sm btn-warning" (click)="openEdit(contentEdit, employee)">
+              <i class="fa fa-edit"></i>Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="openDelete(contentDelete, employee)">
+              <i class="fa fa-remove"></i>Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+        <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+          <i class="fa fa-user"></i> Add Employee
+        </button>
+    </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title1">Add Employee</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+        <div class="form-group">
+            <label for="employeeNumber">Employee Number</label>
+            <div class="input-group">
+                <input id="employeeNumber" name="employeeNumber" class="form-control" ngModel>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstName">Firstname</label>
+            <div class="input-group">
+              <input id="firstName" name="firstName" class="form-control" ngModel>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="middleName">Middlename</label>
+            <div class="input-group">
+              <input id="middleName" name="middleName" class="form-control" ngModel>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Lastname</label>
+            <div class="input-group">
+              <input id="lastName" name="lastName" class="form-control" ngModel>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="department">Department</label>
+            <select class="form-control" id="department" name="department" ngModel>
+                <option value="HR">HR</option>
+                <option value="IT">IT</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="SALES">SALES</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+            <button data-dismiss="modal" class="btn btn-info">Submit</button>
+        </div>
+      </form>
+    </div>
+</ng-template>
+
+<ng-template #contentDetails let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title2">Employee Details</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+            <label>Employee Number</label>
+            <div class="input-group">
+                <input id="empNum" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Firstname</label>
+            <div class="input-group">
+              <input id="fName" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Middlename</label>
+            <div class="input-group">
+              <input id="mName" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Lastname</label>
+            <div class="input-group">
+              <input id="lName" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Department</label>
+            <div class="input-group">
+                <input id = "dep" class="form-control" readonly>
+            </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #contentEdit let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title3">Update Employee</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editForm" novalidate>
+        <div class="form-group">
+            <label for="id">Id</label>
+            <div class="input-group">
+              <input formControlName="id" class="form-control" readonly> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="employeeNumber">Employee Number</label>
+            <div class="input-group">
+                <input formControlName="employeeNumber" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstName">Firstname</label>
+            <div class="input-group">
+              <input formControlName="firstName" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="middleName">Middlename</label>
+            <div class="input-group">
+              <input formControlName="middleName" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Lastname</label>
+            <div class="input-group">
+              <input formControlName="lastName" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="department">Department</label>
+            <select class="form-control" formControlName="department">
+                <option value="HR">HR</option>
+                <option value="IT">IT</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="SALES">SALES</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+            <button data-dismiss="modal" class="btn btn-info" (click)="onSave()">Submit</button>
+        </div>
+      </form>
+    </div>
+</ng-template>
+
+<ng-template #contentDelete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Confirm Delete</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h2>Are you sure you want to delete this record?</h2>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+      <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()">Yes, Delete!</button> 
+    </div>
+</ng-template>

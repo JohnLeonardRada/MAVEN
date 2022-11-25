@@ -1,0 +1,8 @@
+com\exist\service\functions\AddTest.class
+com\exist\service\view\MatrixViewTest.class
+com\exist\service\functions\EditTest.class
+com\exist\service\functions\PrintTest.class
+com\exist\service\controller\matrixConteollerTest.class
+com\exist\service\functions\SearchTest.class
+com\exist\service\functions\ResetTest.class
+com\exist\service\utility\HelperTest.class

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      
+  <modelVersion>4.0.0</modelVersion> 
+  <groupId>com.exist.exercise5</groupId>
+  <artifactId>exercise5</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>exercise5</name>
+      
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+      
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>16</maven.compiler.release>
+    <commons-lang3.version>3.12.0</commons-lang3.version>
+  </properties>
+      
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+            
+    <dependency>         
+      <groupId>org.apache.commons</groupId>   
+      <artifactId>commons-lang3</artifactId>
+      <version>${commons-lang3.version}</version>
+    </dependency>
+  </dependencies>
+  
+  <modules> 
+    <module>app</module>   
+    <module>model</module>   
+    <module>service</module>     
+    <module>utility</module>
+  </modules>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.exist.app</groupId>     
+        <artifactId>app</artifactId>       
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>    
+        <groupId>com.exist.utility</groupId>      
+        <artifactId>utility</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+                  
+      <dependency>   
+        <groupId>com.exist.model</groupId>  
+        <artifactId>model</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+                  
+      <dependency>  
+        <groupId>com.exist.service</groupId>     
+        <artifactId>service</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.8.1</version>
+            </plugin>
+
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-failsafe-plugin</artifactId>
+              <version>3.8.1</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+  </build>
+</project>

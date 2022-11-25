@@ -1,0 +1,54 @@
+<div class="container">
+    <h1>Employee</h1>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Employee Number</th>
+        <th>Firstname</th>
+        <th>Middlename</th>
+        <th>Lastname</th>
+        <th>Department</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees">
+        <td><span>{{employee.id}}</span></td>
+        <td><span>{{employee.employeeNumber}}</span></td>
+        <td><span>{{employee.firstName}}</span></td>
+        <td><span>{{employee.middleName}}</span></td>
+        <td><span>{{employee.lastName}}</span></td>
+        <td><span>{{employee.department}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <br>
+    <h1>Ticket</h1>
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Ticket ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Severity</th>
+        <th>Status</th>
+        <th>Assignee Id</th>
+        <th>Watcher</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td><span>{{ticket.ticketId}}</span></td>
+        <td><span>{{ticket.title}}</span></td>
+        <td><span>{{ticket.description}}</span></td>
+        <td><span>{{ticket.severity}}</span></td>
+        <td><span>{{ticket.status}}</span></td>
+        <td><span>{{ticket.assignee?.id}}</span></td>
+        <td><span>{{ticket.watcher?.id}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+</div>

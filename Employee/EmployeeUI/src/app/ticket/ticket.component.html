@@ -1,0 +1,345 @@
+<div class="container">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Ticket ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Severity</th>
+        <th>Status</th>
+        <th>Assignee Id</th>
+        <th>Watcher</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ticket of tickets">
+        <td><span>{{ticket.ticketId}}</span></td>
+        <td><span>{{ticket.title}}</span></td>
+        <td><span>{{ticket.description}}</span></td>
+        <td><span>{{ticket.severity}}</span></td>
+        <td><span>{{ticket.status}}</span></td>
+        <td><span>{{ticket.assignee?.id}}</span></td>
+        <td><span>{{ticket.watcher?.id}}</span></td>
+        <td>
+            <button class="btn btn-sm btn-success" (click)="openAssignee(contentAssignee, ticket)">
+              <i class="fa fa-plus" ></i> Assignee</button>
+            <button class="btn btn-sm btn-success" (click)="openWatcher(contentWatcher, ticket)">
+              <i class="fa fa-plus" ></i> Watcher</button>
+            <button class="btn btn-sm btn-info" (click)="openDetails(contentDetails, ticket)">
+              <i class="fa fa-search"></i>Details</button>
+            <button class="btn btn-sm btn-warning" (click)="openEdit(contentEdit, ticket)">
+              <i class="fa fa-edit"></i>Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="openDelete(contentDelete, ticket)">
+              <i class="fa fa-remove"></i>Delete</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="openRemoveAssignee(contentRemoveAssignee, ticket)">
+              <i class="fa fa-remove"></i>Assignee</button>
+            <button class="btn btn-sm btn-outline-danger" (click)="openRemoveWatcher(contentRemoveWatcher, ticket)">
+              <i class="fa fa-remove"></i>Watcher</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+        <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+          <i class="fa fa-user"></i> Add Ticket
+        </button>
+    </div>
+</div>
+<br>
+<div class="container">
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Employee Number</th>
+      <th>Firstname</th>
+      <th>Middlename</th>
+      <th>Lastname</th>
+      <th>Department</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td><span>{{employee.id}}</span></td>
+      <td><span>{{employee.employeeNumber}}</span></td>
+      <td><span>{{employee.firstName}}</span></td>
+      <td><span>{{employee.middleName}}</span></td>
+      <td><span>{{employee.lastName}}</span></td>
+      <td><span>{{employee.department}}</span></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title1">Add Ticket</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div class="form-group">
+          <label for="title">Title</label>
+          <div class="input-group">
+              <input id="title" name="title" class="form-control" ngModel>
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="description">Description</label>
+          <div class="input-group">
+            <input id="description" name="description" class="form-control" ngModel>
+          </div>
+      </div>
+      <div class="form-group">
+          <label class="control-label" for="severity">Severity</label>
+          <select class="form-control" id="severity" name="severity" ngModel>
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="Major">Major</option>
+              <option value="Critical">Critical</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label class="control-label" for="status">Status</label>
+          <select class="form-control" id="status" name="status" ngModel>
+              <option value="New">New</option>
+              <option value="Assigned">Assigned</option>
+              <option value="In_Progress">In_Progress</option>
+              <option value="Closed">Closed</option>
+          </select>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+          <button data-dismiss="modal" class="btn btn-info">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #contentAssignee let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title2">Add Assignee</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addAssignee" novalidate>
+      <div class="form-group">
+          <label for="ticketId">Ticket Id</label>
+          <div class="input-group">
+            <input formControlName="ticketId" class="form-control" readonly> 
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="assignee">Employee Id</label>
+        <div class="input-group">
+          <input formControlName="assignee" class="form-control" >
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+          <button data-dismiss="modal" class="btn btn-info" (click)="onAddAssignee()">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #contentWatcher let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title3">Add Watcher</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="addWatcher" novalidate>
+      <div class="form-group">
+          <label for="ticketId">Ticket Id</label>
+          <div class="input-group">
+            <input formControlName="ticketId" class="form-control" readonly> 
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="watcher">Employee Id</label>
+        <div class="input-group">
+          <input formControlName="watcher" class="form-control" >
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+          <button data-dismiss="modal" class="btn btn-info" (click)="onAddWatcher()">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #contentDetails let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title4">Ticket Details</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+            <label>Title</label>
+            <div class="input-group">
+              <input id="tit" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <div class="input-group">
+              <input id="desc" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Severity</label>
+            <div class="input-group">
+              <input id="sever" class="form-control" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Status</label>
+            <div class="input-group">
+                <input id = "stat" class="form-control" readonly>
+            </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+    </div>
+</ng-template>
+
+<ng-template #contentEdit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title5">Update Ticket</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm" novalidate>
+      <div class="form-group">
+          <label for="ticketId">Ticket Id</label>
+          <div class="input-group">
+            <input formControlName="ticketId" class="form-control" readonly> 
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="title">Title</label>
+          <div class="input-group">
+              <input formControlName="title" class="form-control">
+          </div>
+      </div>
+      <div class="form-group">
+          <label for="description">Description</label>
+          <div class="input-group">
+            <input formControlName="description" class="form-control">
+          </div>
+      </div>
+      <div class="form-group">
+          <label class="control-label" for="severity">Severity</label>
+          <select class="form-control" formControlName="severity">
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="Major">Major</option>
+              <option value="Critical">Critical</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label class="control-label" for="status">Status</label>
+          <select class="form-control" formControlName="status">
+              <option value="New">New</option>
+              <option value="Assigned">Assigned</option>
+              <option value="In_Progress">In_Progress</option>
+              <option value="Closed">Closed</option>
+          </select>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+          <button data-dismiss="modal" class="btn btn-info" (click)="onSave()">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #contentDelete let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Confirm Delete</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h2>Are you sure you want to delete this record?</h2>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    <button data-dismiss="modal" class="btn btn-danger" (click)="onDelete()">Yes, Delete!</button> 
+  </div>
+</ng-template>
+
+<ng-template #contentRemoveAssignee let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title6">Remove Assignee</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="removeAssignee" novalidate>
+      <div class="form-group">
+          <label for="ticketId">Ticket Id</label>
+          <div class="input-group">
+            <input formControlName="ticketId" class="form-control" readonly> 
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="watcher">Employee Id</label>
+        <div class="input-group">
+          <input formControlName="assignee" class="form-control" readonly>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+          <button data-dismiss="modal" class="btn btn-info" (click)="onRemoveAssignee()">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #contentRemoveWatcher let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title6">Remove Watcher</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="removeWatcher" novalidate>
+      <div class="form-group">
+          <label for="ticketId">Ticket Id</label>
+          <div class="input-group">
+            <input formControlName="ticketId" class="form-control" readonly> 
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="watcher">Employee Id</label>
+        <div class="input-group">
+          <input formControlName="watcher" class="form-control" >
+        </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+          <button data-dismiss="modal" class="btn btn-info" (click)="onRemoveWatcher()">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

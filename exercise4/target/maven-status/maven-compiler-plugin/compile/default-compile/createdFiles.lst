@@ -1,0 +1,7 @@
+com\exist\exercise4\model\Content.class
+com\exist\exercise4\model\Matrix.class
+com\exist\exercise4\view\MatrixView.class
+com\exist\exercise4\controller\MatrixController.class
+com\exist\exercise4\utility\Reader.class
+com\exist\exercise4\controller\MainController.class
+com\exist\exercise4\utility\Helper.class
